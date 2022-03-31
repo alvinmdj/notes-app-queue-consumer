@@ -55,7 +55,7 @@ PGDATABASE=<dbname>
 PGHOST=localhost
 PGPORT=5432
 
-# nodemailer SMTP authentication
+# nodemailer SMTP authentication (using gmail)
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=465
 MAIL_ADDRESS=<email-address>
