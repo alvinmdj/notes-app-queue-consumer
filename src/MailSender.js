@@ -3,12 +3,15 @@ const nodemailer = require('nodemailer');
 class MailSender {
   constructor() {
     this._transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
+      host: process.env.MAIL_HOST,
+      port: process.env.MAIL_PORT,
       secure: true,
       auth: {
         user: process.env.MAIL_ADDRESS,
         pass: process.env.MAIL_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
   }
@@ -19,7 +22,7 @@ class MailSender {
       to: targetEmail,
       subject: 'Notes export',
       text: 'Here is your exported notes',
-      attachment: [
+      attachments: [
         {
           filename: 'notes.json',
           content,
